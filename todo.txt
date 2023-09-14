@@ -1,3 +1,4 @@
 Fix the Status Component
 Fix the Active Board Id Prop
 Fix the Mobile Menu Component 
+Fix the "3 of subtask" counter of incomplete subtasks

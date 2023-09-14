@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useContext } from 'react'
-import { AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { DataContext } from '@/context/data-provider'
 import TaskDetails from './taskdetails'
 import EditTaskForm from './edittaskform'
@@ -28,7 +28,10 @@ const Task = ({ name, count, currentTask, columnId }: Props) => {
     }
 
     return (
-        <div>
+        <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}>
             <button onClick={handleClick}
                 className='group w-full flex flex-col text-start py-[23px] px-4 bg-white dark:bg-dark-grey transition duration-500 rounded-lg tasks cursor-pointer'>
                 <h3 className='text-custom-black dark:text-white font-bold text-[0.938rem] leading-[1.188rem] mb-2 line-clamp-1 group-hover:text-main-purple transition-colors duration-200'>{name}</h3>
@@ -46,7 +49,7 @@ const Task = ({ name, count, currentTask, columnId }: Props) => {
             <AnimatePresence>
                 {isDeleteTaskFormOpen && <DeleteTaskForm taskName={name} setIsDeleteTaskFormOpen={setIsDeleteFormOpen} />}
             </AnimatePresence>
-        </div>
+        </motion.div>
     )
 }
 
